@@ -1,15 +1,22 @@
-﻿// использум функции
-int a1 = 230, b1 = 2, c1 = 56;
-int a2 = 87, b2 = 1200, c2 = 980;
-int a3 = 123,  b3 = 77712, c3 = 578921;
+﻿// Массив. Поиск максимального в массиве с помощью метода (функции)
 
-int Max(int arg1, int arg2, int arg3)  // задаем функцию Max с 3-мя агрументами
-{
+// создаем метод (функцию) для поиска max из трех
+int Max(int arg1, int arg2, int arg3)                  
+{        // тело метода (функции)  
     int result = arg1;
     if (arg2 > result) result = arg2;
     if (arg3 > result) result = arg3;
-    return result;                       // возвращаем значение функции 
+    return result;
 }
-int max = Max(Max(a1, b1, c1), Max(a2, b2, c2), Max(a3, b3, c3));  // Внутри аргумента передаем функцию
+// индексы      0   1  2    3   4   5   6   7   8
+int[] array = { 1001, 54, 66, 43, 89, 27, 123, 3, 63 };   
+// создали массив с типом int, c именем array
 
-Console.WriteLine(max);
+int max = Max(                       // вызываем метод (функцию)
+    Max(array[0], array[1], array[2]),
+    Max(array[3], array[4], array[5]),
+    Max(array[6], array[7], array[8])
+);
+
+Console.WriteLine($"Максимальный элемент массива -  {max}");
+
