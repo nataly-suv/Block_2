@@ -1,21 +1,21 @@
-﻿// Массив. Поиск максимального в массиве с помощью метода (функции)
+﻿// Поиск позиции элемента массисва
 
-// создаем метод (функцию) для поиска max из трех
-int Max(int arg1, int arg2, int arg3)                  
-{        // тело метода (функции)  
-    int result = arg1;
-    if (arg2 > result) result = arg2;
-    if (arg3 > result) result = arg3;
-    return result;
+// индексы      0   1   2   3  4   5   6   7   8
+int[] array = { 12, 44, 73, 4, 11, 56, 87, 5, 14 };  
+// задали массив с типом int и именем array
+int n = array.Length;
+int find = 4;    
+// будеи искать индекс элемента массива, значение которого равно 4. 
+int index = 0;
+while (index < n)
+{
+    if (array[index] == find) 
+    {
+        Console.WriteLine(index);
+        break;  
+        /* прерывает цикл после первого вхождения. 
+        Иначе выведет все индексы элементов, значнеи которых равно 4 */
+    }
+    index++;
 }
-// индексы      0   1  2    3   4   5   6   7   8
-int[] array = { 1001, 54, 66, 43, 89, 27, 123, 3, 63 };   
-// создали массив с типом int, c именем array
-
-int max = Max(                       // вызываем метод (функцию)
-    Max(array[0], array[1], array[2]),
-    Max(array[3], array[4], array[5]),
-    Max(array[6], array[7], array[8])
-);
-
-Console.WriteLine($"Максимальный элемент массива -  {max}");
+if (index == 9 && array[8] != find) Console.WriteLine("нет значений, удовлетворяющих условию");
