@@ -1,67 +1,60 @@
-﻿// Задание и печать массива через методы (функции). Нахождение индекса элемента
+﻿// Вывести случайное число [10. 100] и показать наибольшую цифру числа
 
-// 1-ый метод (функция). Заполнение массива случайными значениями 
-
-void FillArray(int[] collection)
-/* задали метод void (не возвращает значение), 
-имя метода FillArray, аргумент - массив с именем collection */
+// вариант 1
+void variant1(System.Random numberSint)
+// в метод передаю переменную numberSint
 {
-    int length = collection.Length; // орпеделили размер массива
-    int index = 0;
-    while (index < length)
-    {
-        collection[index] = new Random().Next(1, 10);
-        // заполнили массив случайными числами в диапазоне [1, 10)
-        index++;
-    }
+    int number = numberSint.Next(10, 100);
+    // вызываю метод Next для определя случайного числа [10, 100)
+    int firstNumber = number / 10;
+    int secondNumber = number % 10;
+    Console.WriteLine(number);
+
+    if (firstNumber == secondNumber)
+        Console.WriteLine("Цифры в числе одинаковые и равны - " + firstNumber);
+    else if (firstNumber > secondNumber)
+        Console.WriteLine("Максимальная цифра в цисле - " + firstNumber);
+    else Console.WriteLine("Максимальная цифра в цисле - " + secondNumber);
+    Console.WriteLine();
 }
 
-// 2-ой метод (функция). Печатает массив
-
-void PrintArray(int[] col)
-/* задали метод void (не возвращает значение), 
-имя метода PrintArray, аргумент - массив с именем col */
+// вариант 2 
+void variant2()
 {
-    int count = col.Length;
-    int position = 0;
-    while (position < count)
-    {
-        Console.Write($"{col[position]}  ");
-        // выводим на консоль элемент массива с индексом position в одну строчку
-        position++;
-    }
+    int number2 = new Random().Next(10, 100);
+    // более короткий способ определяни случайного числа
+    Console.WriteLine("случайное число - " + number2);
+    string stringNum = number2.ToString(); //перевожу число в строку
+
+    if (stringNum[0] == stringNum[1])
+        Console.WriteLine("Цифры равны и имеют значение " + stringNum[0]);
+    else if (stringNum[0] > stringNum[1])
+        Console.WriteLine("Максимальная цифра - " + stringNum[0]);
+    else Console.WriteLine("Максимальная цифра - " + stringNum[1]);
+    Console.WriteLine();
 }
 
-// 3-ий метод. Поиск позиции элемента
-int IndexOf(int[] collection, int find) 
-/* задали метод (функцию) с типом int, с именем IndexOf, 
-с 2-мя агрументами: массив collection И переменная find */
+// вариант 3
+void variant3()
 {
-    int count = collection.Length;
-    int index = 0;
-    int position = -1;
-    /* задаем -1, чтобы при отсутствии элемента со значение find, 
-    на консоль вывело -1, а не 0. Т.к. 0 это первый элемен массива */
-    while (index < count)
-    {
-        if (collection[index] == find)
-        {
-            position = index;
-            break; // чтобы выйти из цикла после первого вхождения
-        }
-        index++;
-    }
-    return position;
+    System.Random number3 = new Random();
+
+    char[] mas = number3.Next(10, 100).ToString().ToCharArray();
+    //          случайное чило переводим в строку и переводим в массив   
+
+    Console.WriteLine(mas);
+
+    int firstNum = ((int)mas[0]) - 48;
+    int secondNum = ((int)mas[1]) - 48;
+
+    // далее тернальный опрератор 
+    int result = firstNum > secondNum ? result = firstNum : result = secondNum;
+    Console.WriteLine("Максимальная цифра числа - " + result);
 }
 
+Console.Clear();
+System.Random numberSint = new Random();  //определяю класс переменной numberSint
 
-int[] array = new int[10]; 
-// создали новый массив с именем array с 10-ю элементами. по умолчанию они 0 
-
-FillArray(array); //вызываем первый метод. рандомно заполняем массив
-PrintArray(array); //вызываем второй метод. выводим массив на печать
-Console.WriteLine(0); // Выводим пустую строку 
-int answer = IndexOf(array, 4);   
-// вызываем третий метод. В функции задаем массив array и значение к-ое ищем - 4
-Console.WriteLine(answer);
-Console.WriteLine();
+variant1(numberSint);
+variant2();
+variant3();
