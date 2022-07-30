@@ -1,40 +1,16 @@
-﻿// Вывести трьетью цифру числа, или сообщить, что третьей цифры нет
-// баг - масимум можно ввести 9 цифр
-
-// Метод - определяю количество цифр в числе.
-int kolichestvo(int x)  
-{
-    int count = 0;
-    while (x > 0)
-    {
-        x = x / 10;
-        count++;
-    }
-    Console.WriteLine($"В числе {count} цифр");
-    return count;
-}
-
-Console.WriteLine("Введите число");
+﻿// определяем выходной 
+Console.WriteLine("Введите число от 1 до 7");
 string? inNumber = Console.ReadLine();
 
 if (inNumber != null)
 {
     int number = int.Parse(inNumber);
-    int count = kolichestvo(number); // вызываю метод
-    if (count == 3)   // если в числе 3 цифры
+    if ((0 < number) && (number < 8))
     {
-        int numberShort = number % 10;
-        Console.WriteLine("Третья цифра - " + numberShort);
+        if ((number == 6) || (number == 7)) Console.WriteLine("Ура! Выходной");
+        else Console.WriteLine("это не выходной");
     }
-    else if (count > 3)
-    {
-        double y = number / Math.Pow(10, (count - 3)); 
-        // отбрасываю хвост числа. оставляю 3 цифры
-        double numberShort = Math.Floor(y); 
-        // округляю число до целого в меньшую сторону
-        // int numberShort = (int)y;  // так тоже можно отбросить числа после запятой
-        Console.WriteLine("Третья цифра - " + numberShort % 10);
-    }
-    else Console.WriteLine("В числе нет третьей цифры");
-
+    else Console.WriteLine("простите, мы не можем определить день недели");
 }
+Console.WriteLine();
+
