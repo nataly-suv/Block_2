@@ -1,27 +1,18 @@
-﻿// Удаление 2-ой цифры в 3-х значном числе
+﻿// проверка на кратность. Кратно ли второе число первому? вывести остаток от деления
 
-void variant1()
+Console.Write("Введите первое число: ");
+string? inNum1 = Console.ReadLine();
+Console.Write("Введите второе число: ");
+string? inNum2 = Console.ReadLine();
+
+if (inNum1 != null && inNum2 != null)
 {
-    int number = new Random().Next(100, 1000);
-    Console.WriteLine("исходное число: " + number);
+    int num1 = int.Parse(inNum1);
+    int num2 = int.Parse(inNum2);
+    int div = num2 % num1;
 
-    int num1 = number / 100;
-    int num3 = number % 10;
-    int result = num1 * 10 + num3;
-    Console.WriteLine("ответ: " + result);
+    if (div == 0)
+        Console.WriteLine("Второе число кратно первому");
+    else
+        Console.WriteLine("Второе число не кратно первому, остаток от деления = " + div);
 }
-
-void variant2()
-{
-    int number = new Random().Next(100, 1000);
-    Console.WriteLine("исходное число: " + number);
-    string numString = number.ToString();
-    Console.Write("ответ:  ");
-    Console.Write(numString[0]);
-    Console.Write(numString[2]);
-}
-
-variant1();
-Console.WriteLine();
-variant2();
-
