@@ -1,18 +1,17 @@
-﻿// проверка на кратность. Кратно ли второе число первому? вывести остаток от деления
+﻿// ЯвляеТся ли одно число квадратом другого
 
-Console.Write("Введите первое число: ");
+Console.WriteLine("Введите первое число");
 string? inNum1 = Console.ReadLine();
-Console.Write("Введите второе число: ");
+Console.WriteLine("Введите второе число");
 string? inNum2 = Console.ReadLine();
-
 if (inNum1 != null && inNum2 != null)
 {
     int num1 = int.Parse(inNum1);
     int num2 = int.Parse(inNum2);
-    int div = num2 % num1;
 
-    if (div == 0)
-        Console.WriteLine("Второе число кратно первому");
-    else
-        Console.WriteLine("Второе число не кратно первому, остаток от деления = " + div);
+    if (Math.Pow(num1, 2) == num2 || Math.Pow(num2, 2) == num1)
+    {
+        Console.WriteLine ("одно число является квадратом другого");
+    }
+    else Console.WriteLine ("одно число не является квадратом другого");
 }
