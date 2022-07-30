@@ -1,21 +1,40 @@
-﻿//  Програ принимает 3-х значное число и выводит 2-ую цифру 
+﻿// Вывести трьетью цифру числа, или сообщить, что третьей цифры нет
+// баг - масимум можно ввести 9 цифр
 
-Console.WriteLine("Введите трехзначное число");
+// Метод - определяю количество цифр в числе.
+int kolichestvo(int x)  
+{
+    int count = 0;
+    while (x > 0)
+    {
+        x = x / 10;
+        count++;
+    }
+    Console.WriteLine($"В числе {count} цифр");
+    return count;
+}
+
+Console.WriteLine("Введите число");
 string? inNumber = Console.ReadLine();
 
 if (inNumber != null)
 {
-    int a = Convert.ToInt32(inNumber); //преобразование строки в int
-    string b = a.ToString();   // преобразование int в строку
-    char[] massiv = b.ToCharArray(); // преобразование строки в массив
-    int count = massiv.Length;  // длина массива
-    if (count != 3)  // проверка, что число 3-ч значное
+    int number = int.Parse(inNumber);
+    int count = kolichestvo(number); // вызываю метод
+    if (count == 3)   // если в числе 3 цифры
     {
-        Console.WriteLine("Вы ввели не трехзначное число. Запустите программу заново");
+        int numberShort = number % 10;
+        Console.WriteLine("Третья цифра - " + numberShort);
     }
-    else
+    else if (count > 3)
     {
-        Console.WriteLine("Вторая цифра числа - " + massiv[1]);
+        double y = number / Math.Pow(10, (count - 3)); 
+        // отбрасываю хвост числа. оставляю 3 цифры
+        double numberShort = Math.Floor(y); 
+        // округляю число до целого в меньшую сторону
+        // int numberShort = (int)y;  // так тоже можно отбросить числа после запятой
+        Console.WriteLine("Третья цифра - " + numberShort % 10);
     }
-}
+    else Console.WriteLine("В числе нет третьей цифры");
 
+}
